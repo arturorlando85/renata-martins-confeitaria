@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Painel | Renata Martins Confeitaria</title>
-<link rel="icon" href="../assets/img/favicon.png" type="image/png">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="/admin/admin.css">
 </head>
 <body>
 
 <!-- Carregando -->
 <section class="tela tela-centro" id="telaCarregando">
-  <img src="../assets/img/icone.png" alt="" class="pulsar" width="90">
+  <img src="/assets/img/icone.png" alt="" class="pulsar" width="90">
 </section>
 
 <!-- Login -->
 <section class="tela tela-centro" id="telaLogin" hidden>
   <div class="cartao-login">
-    <img src="../assets/img/logo.png" alt="Renata Martins Confeitaria" class="logo-login">
+    <img src="/assets/img/logo.png" alt="Renata Martins Confeitaria" class="logo-login">
     <h1>Painel da confeitaria</h1>
     <p id="loginMsg">Entre com a sua conta Google para editar o site.</p>
     <button class="btn btn-google" id="btnGoogle">
@@ -29,7 +29,7 @@
       Entrar com Google
     </button>
     <button class="btn btn-link" id="btnSairLogin" hidden>Entrar com outra conta</button>
-    <a href="../" class="voltar-site">← Voltar para o site</a>
+    <a href="/" class="voltar-site">← Voltar para o site</a>
   </div>
 </section>
 
@@ -37,12 +37,12 @@
 <div id="telaPainel" hidden>
   <header class="topo">
     <div class="topo-inner">
-      <img src="../assets/img/icone.png" alt="" width="40" height="34">
+      <img src="/assets/img/icone.png" alt="" width="40" height="34">
       <div class="topo-titulo">
         <strong>Painel</strong>
         <span id="usuarioEmail"></span>
       </div>
-      <a href="../" target="_blank" rel="noopener" class="btn btn-small btn-ghost">Ver site</a>
+      <a href="/" target="_blank" rel="noopener" class="btn btn-small btn-ghost">Ver site</a>
       <button class="btn btn-small btn-link" id="btnSair">Sair</button>
     </div>
     <nav class="abas" role="tablist">
@@ -276,7 +276,7 @@
 <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="../js/supabase-config.js"></script>
-<script src="admin.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/admin/admin.js"></script>
 </body>
 </html>

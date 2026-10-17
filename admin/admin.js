@@ -154,7 +154,7 @@
   const itemProduto = (p) => `
     <div class="item ${p.visivel ? "" : "oculto"}">
       <button class="item-abrir" data-editar-produto="${esc(p.id)}">
-        ${p.foto_path ? `<img class="thumb" src="${esc(fotoUrl(p.foto_path))}" alt="" loading="lazy">` : `<img class="thumb thumb-vazia" src="../assets/img/icone.png" alt="">`}
+        ${p.foto_path ? `<img class="thumb" src="${esc(fotoUrl(p.foto_path))}" alt="" loading="lazy">` : `<img class="thumb thumb-vazia" src="/assets/img/icone.png" alt="">`}
         <span class="item-info">
           <strong>${esc(p.nome)}</strong>
           <small>${p.preco_promo !== null ? `<s>${brl(p.preco)}</s> ${brl(p.preco_promo)}` : brl(p.preco)} / ${esc(p.unidade)}</small>
