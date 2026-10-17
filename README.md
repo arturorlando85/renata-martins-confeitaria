@@ -20,7 +20,7 @@ Guia de uso para a Renata: [`docs/guia-do-painel.md`](docs/guia-do-painel.md).
 
 ### Instalação (uma vez só)
 
-1. **Projeto Supabase:** crie um projeto (região São Paulo, `sa-east-1`) e rode, no SQL Editor e nesta ordem, `supabase/001_cms.sql` e `supabase/002_dados_iniciais.sql`.
+1. **Projeto Supabase:** crie um projeto (região São Paulo, `sa-east-1`) e rode, no SQL Editor e nesta ordem, os arquivos `supabase/001_cms.sql`, `002_dados_iniciais.sql` e `003_restringir_permissoes_visitante.sql`.
 2. **Login com Google:**
    - No Google Cloud Console, crie um "ID do cliente OAuth" do tipo **Aplicativo da Web** e use como URI de redirecionamento autorizado a URL de callback que o Supabase mostra em *Authentication → Sign In / Providers → Google* (`https://<projeto>.supabase.co/auth/v1/callback`).
    - No Supabase, ative o provedor **Google** com o Client ID e o Client Secret.
