@@ -1,4 +1,5 @@
-(function () {
+/* Chamado por js/carregar.js depois que os dados do site estão prontos. */
+function iniciarSite() {
   "use strict";
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -29,6 +30,10 @@
   $("#contactHours").textContent = LOJA.horario;
   $("#contactCity").textContent = LOJA.cidade;
   $("#year").textContent = new Date().getFullYear();
+  if (LOJA.sobreTitulo) $("#sobreTitulo").textContent = LOJA.sobreTitulo;
+  if (LOJA.sobreTexto) {
+    $("#sobreTexto").innerHTML = LOJA.sobreTexto.split(/\n\s*\n/).map((par) => `<p>${esc(par.trim())}</p>`).join("");
+  }
   $("#howNote").textContent =
     `Encomendas com no mínimo ${LOJA.antecedenciaDias} dia${LOJA.antecedenciaDias === 1 ? "" : "s"} de antecedência. Atendimento: ${LOJA.horario}.`;
 
@@ -66,7 +71,7 @@
         <h3>${esc(c.titulo)}</h3>
         <p>${esc(c.texto)}</p>
         ${c.fim ? `<span class="promo-until">Válido até ${formataData(c.fim)}</span>` : ""}
-        ${c.produto && produtoPorId(c.produto)
+        ${c.produto && produtoPorId(c.produto) && !produtoPorId(c.produto).esgotado
           ? `<button class="btn btn-small" data-add="${esc(c.produto)}">Quero esse!</button>`
           : `<a class="btn btn-small" href="#cardapio">Ver cardápio</a>`}
       </article>`).join("");
@@ -175,7 +180,9 @@
               ${promo ? `<del>${brl(p.preco)}</del>` : ""}
               ${brl(precoFinal(p))} <small>/ ${esc(p.unidade)}</small>
             </div>
-            <button class="add-btn" data-add="${esc(p.id)}">Adicionar</button>
+            ${p.esgotado
+              ? `<button class="add-btn" disabled>Esgotado</button>`
+              : `<button class="add-btn" data-add="${esc(p.id)}">Adicionar</button>`}
           </div>
         </div>
       </article>`;
@@ -196,7 +203,7 @@
   let carrinho = {};
   try {
     const salvo = JSON.parse(localStorage.getItem(CHAVE) || "{}");
-    Object.keys(salvo).forEach((id) => { if (produtoPorId(id) && salvo[id] > 0) carrinho[id] = salvo[id]; });
+    Object.keys(salvo).forEach((id) => { if (produtoPorId(id) && !produtoPorId(id).esgotado && salvo[id] > 0) carrinho[id] = salvo[id]; });
   } catch (_) { carrinho = {}; }
 
   const salvar = () => { try { localStorage.setItem(CHAVE, JSON.stringify(carrinho)); } catch (_) { /* sem storage */ } };
@@ -376,4 +383,4 @@
   });
 
   renderCarrinho();
-})();
+}

@@ -401,3 +401,6 @@ p { margin: 0 0 1em; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- Produto esgotado ---------- */
+.add-btn:disabled { background: var(--rose); color: var(--texto-suave); cursor: not-allowed; }

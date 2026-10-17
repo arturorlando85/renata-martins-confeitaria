@@ -8,17 +8,29 @@ Site simples (HTML/CSS/JS puro, sem build) para divulgar produtos e campanhas e 
 2. Preenche nome, telefone, retirada ou entrega (com endereço), data (respeitando a antecedência mínima), horário, pagamento e observações.
 3. Ao clicar em **Enviar pedido pelo WhatsApp**, o pedido completo, com itens, total e dados, abre já escrito no WhatsApp da confeitaria. Basta confirmar com o cliente.
 
-## O que editar (tudo em `js/dados.js`)
+## Painel de edição (CMS)
 
-| O quê | Onde |
-|---|---|
-| **Número do WhatsApp** que recebe os pedidos (obrigatório!) | `LOJA.whatsapp`, no formato `55` + DDD + número, só dígitos |
-| Cidade, horário, antecedência, taxa de entrega, formas de pagamento | objeto `LOJA` |
-| **Campanhas/promoções** (faixa do topo + cartões) | lista `CAMPANHAS`. Use `inicio`/`fim` (AAAA-MM-DD) para entrarem e saírem do ar sozinhas |
-| **Produtos**, preços e preços promocionais | lista `PRODUTOS` (`preco`, `precoPromo`, `destaque`) |
-| Fotos reais | salve em `assets/produtos/` e troque `foto: null` por `foto: "assets/produtos/arquivo.jpg"` |
+O conteúdo do site (produtos, fotos, promoções, categorias e dados da loja) é editado pelo painel em **`/admin`**, com login pela conta Google. Os dados ficam no **Supabase**. Se o Supabase não estiver configurado ou não responder, o site abre com os dados de reserva de `js/dados.js`.
 
-> Os produtos, preços e textos atuais são **exemplos**. O Instagram exige login, então não deu para copiar o cardápio real. Revise antes de publicar.
+- **Dona** (`renatachm@gmail.com` na instalação): edita tudo e é a única que libera ou remove acessos.
+- **Editor**: edita o conteúdo, mas não mexe em acessos.
+- As regras de acesso ficam no próprio banco (RLS), não só na tela. O painel nunca fica sem nenhuma Dona.
+
+Guia de uso para a Renata: [`docs/guia-do-painel.md`](docs/guia-do-painel.md).
+
+### Instalação (uma vez só)
+
+1. **Projeto Supabase:** crie um projeto (região São Paulo, `sa-east-1`) e rode, no SQL Editor e nesta ordem, os arquivos `supabase/001_cms.sql`, `002_dados_iniciais.sql` e `003_restringir_permissoes_visitante.sql`.
+2. **Login com Google:**
+   - No Google Cloud Console, crie um "ID do cliente OAuth" do tipo **Aplicativo da Web** e use como URI de redirecionamento autorizado a URL de callback que o Supabase mostra em *Authentication → Sign In / Providers → Google* (`https://<projeto>.supabase.co/auth/v1/callback`).
+   - No Supabase, ative o provedor **Google** com o Client ID e o Client Secret.
+   - Em *Authentication → Sign In / Providers*, **desative o provedor Email**. O banco já só aceita login feito pelo Google, mas assim ninguém cria conta por e-mail e senha.
+   - Em *Authentication → URL Configuration*, coloque `https://renata-martins-confeitaria.vercel.app` como **Site URL** e `https://renata-martins-confeitaria.vercel.app/admin/` em **Redirect URLs**.
+3. **Conectar o site:** em `js/supabase-config.js`, preencha `url` (Project URL) e `chave` (publishable key). A chave publishable é pública e pode ficar no código. **Nunca** coloque aqui a chave `secret`/`service_role`.
+
+### Fotos
+
+As fotos são reduzidas no navegador para no máximo 1200 px (WebP) antes do envio e ficam no bucket público `produtos`. Ao trocar ou remover a foto de um produto, a antiga é apagada.
 
 ## Identidade visual aplicada
 
