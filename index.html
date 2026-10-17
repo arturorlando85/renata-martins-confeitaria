@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renata Martins Confeitaria | Brigadeiros gourmet e doces artesanais</title>
+<meta name="description" content="Brigadeiros gourmet, caixas presenteáveis, bolos e doces para festas. Faça seu pedido online pela Renata Martins Confeitaria.">
+<meta property="og:title" content="Renata Martins Confeitaria">
+<meta property="og:description" content="Brigadeiros gourmet e doces artesanais. Faça seu pedido online!">
+<meta property="og:image" content="assets/img/logo.png">
+<meta name="theme-color" content="#FD9CAF">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Faixa de campanha (preenchida pelo JS com a 1ª campanha ativa) -->
+<div class="topbar" id="topbar" hidden></div>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#inicio" class="brand" aria-label="Renata Martins Confeitaria - início">
+      <img src="assets/img/logo.png" alt="Renata Martins Confeitaria" width="900" height="419">
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#promocoes">Promoções</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#como-pedir">Como pedir</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" id="cartOpen" aria-label="Abrir meu pedido">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 4V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v1h3a1 1 0 0 1 1 1.1l-1.4 14A2 2 0 0 1 17.6 21H6.4a2 2 0 0 1-2-1.9L3 5.1A1 1 0 0 1 4 4h3Zm2 0h6V4H9Zm-1 4a1 1 0 0 0-1 1 5 5 0 0 0 10 0 1 1 0 1 0-2 0 3 3 0 0 1-6 0 1 1 0 0 0-1-1Z"/></svg>
+        <span class="cart-label">Meu pedido</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Confeitaria artesanal</span>
+        <h1>Doces feitos com carinho para adoçar os seus momentos</h1>
+        <p>Brigadeiros gourmet, caixas para presentear, bolos e docinhos para festas. Escolha seus favoritos e faça seu pedido aqui mesmo pelo site.</p>
+        <div class="hero-cta">
+          <a href="#cardapio" class="btn btn-primary">Fazer meu pedido</a>
+          <a href="#promocoes" class="btn btn-ghost">Ver promoções</a>
+        </div>
+        <ul class="hero-badges">
+          <li>Feito à mão</li>
+          <li>Ingredientes nobres</li>
+          <li>Retirada ou entrega</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-circle">
+          <img src="assets/img/icone.png" alt="">
+        </div>
+        <img class="hero-seal" src="assets/img/selo.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOÇÕES -->
+  <section class="section promos" id="promocoes">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Campanhas</span>
+        <h2>Promoções e novidades</h2>
+        <p>Fique de olho: sempre tem novidade docinha por aqui.</p>
+      </div>
+      <div class="promo-grid" id="promoGrid"></div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section class="section menu" id="cardapio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cardápio</span>
+        <h2>Escolha seus doces</h2>
+        <p>Adicione os produtos ao seu pedido e finalize em poucos passos.</p>
+      </div>
+      <div class="filters" id="filters" role="tablist" aria-label="Categorias"></div>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- COMO PEDIR -->
+  <section class="section how" id="como-pedir">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Simples assim</span>
+        <h2>Como fazer seu pedido</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <h3>Escolha</h3>
+          <p>Navegue pelo cardápio e adicione os doces que você quer ao seu pedido.</p>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>Informe os dados</h3>
+          <p>Diga a data, se prefere retirar ou receber em casa e a forma de pagamento.</p>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>Envie</h3>
+          <p>Seu pedido chega pronto no nosso WhatsApp. A gente confirma tudo com você.</p>
+        </li>
+      </ol>
+      <p class="how-note" id="howNote"></p>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section about" id="sobre">
+    <div class="container about-inner">
+      <div class="about-art" aria-hidden="true">
+        <img src="assets/img/selo.png" alt="">
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">Sobre</span>
+        <h2>Oi, eu sou a Renata!</h2>
+        <p>A Renata Martins Confeitaria nasceu do amor por transformar ingredientes simples em pequenos momentos de alegria. Cada brigadeiro é enrolado à mão, com chocolate nobre e muito capricho, do jeitinho que eu faria para a minha família.</p>
+        <p>Trabalho por encomenda para garantir doces sempre fresquinhos — para presentear, comemorar ou simplesmente se dar um mimo.</p>
+        <a href="#" class="btn btn-ghost js-instagram" target="_blank" rel="noopener">Acompanhe no Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section contact" id="contato">
+    <div class="container contact-inner">
+      <div>
+        <span class="eyebrow">Contato</span>
+        <h2>Vamos conversar?</h2>
+        <p>Pedidos personalizados, festas e eventos corporativos: fale com a gente.</p>
+      </div>
+      <ul class="contact-list">
+        <li><strong>WhatsApp</strong><a href="#" class="js-whatsapp" target="_blank" rel="noopener" id="contactWhats">Enviar mensagem</a></li>
+        <li><strong>Instagram</strong><a href="#" class="js-instagram" target="_blank" rel="noopener">@renatamartinsconfeitaria</a></li>
+        <li><strong>Atendimento</strong><span id="contactHours"></span></li>
+        <li><strong>Local</strong><span id="contactCity"></span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <img src="assets/img/logo.png" alt="Renata Martins Confeitaria" class="footer-logo" width="900" height="419">
+    <p>&copy; <span id="year"></span> Renata Martins Confeitaria. Feito com carinho.</p>
+  </div>
+</footer>
+
+<!-- CARRINHO / CHECKOUT -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Meu pedido" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Meu pedido</h2>
+    <button class="icon-btn" id="cartClose" aria-label="Fechar">&times;</button>
+  </div>
+
+  <div class="drawer-body">
+    <div id="cartEmpty" class="cart-empty">
+      <img src="assets/img/icone.png" alt="" width="110">
+      <p>Seu pedido está vazio.<br>Que tal começar por um brigadeiro?</p>
+      <a href="#cardapio" class="btn btn-primary" id="cartBrowse">Ver cardápio</a>
+    </div>
+
+    <ul class="cart-items" id="cartItems"></ul>
+
+    <form class="checkout" id="checkout" novalidate>
+      <h3>Seus dados</h3>
+      <label>Nome*
+        <input type="text" name="nome" required autocomplete="name">
+      </label>
+      <label>WhatsApp / telefone*
+        <input type="tel" name="telefone" required autocomplete="tel" placeholder="(00) 00000-0000">
+      </label>
+
+      <fieldset class="toggle">
+        <legend>Como prefere receber?*</legend>
+        <label><input type="radio" name="recebimento" value="Retirada" checked> Retirar</label>
+        <label><input type="radio" name="recebimento" value="Entrega"> Entrega</label>
+      </fieldset>
+
+      <label class="js-endereco" hidden>Endereço de entrega*
+        <textarea name="endereco" rows="2" placeholder="Rua, número, bairro e complemento"></textarea>
+      </label>
+
+      <div class="row">
+        <label>Data*
+          <input type="date" name="data" required>
+        </label>
+        <label>Horário
+          <input type="time" name="hora">
+        </label>
+      </div>
+
+      <label>Forma de pagamento*
+        <select name="pagamento" required id="payment"></select>
+      </label>
+
+      <label>Observações
+        <textarea name="obs" rows="3" placeholder="Sabores da caixa, tema da festa, cor das forminhas, mensagem do cartão..."></textarea>
+      </label>
+      <p class="form-error" id="formError" role="alert"></p>
+    </form>
+  </div>
+
+  <div class="drawer-foot" id="drawerFoot">
+    <div class="totals">
+      <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+      <div class="muted" id="deliveryLine" hidden><span>Entrega</span><span id="deliveryFee"></span></div>
+      <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+    </div>
+    <button type="submit" form="checkout" class="btn btn-primary btn-block">
+      Enviar pedido pelo WhatsApp
+    </button>
+    <p class="foot-note">O pedido é confirmado após nosso retorno com a disponibilidade e forma de pagamento.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<a href="#" class="whats-float js-whatsapp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.4-.2Z"/></svg>
+</a>
+
+<script src="js/dados.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
